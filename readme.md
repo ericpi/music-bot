@@ -17,25 +17,13 @@
 依照以下步驟輸入指令
 
 ```
-git clone https://github.com/xup6m6fu04/music-bot.git
-
+composer create-project xup6m6fu04/music-bot=dev-master
 ```
-
 ```
 cd music-bot
-
-```
-
-```
-composer install
-
 ```
 ```
-php artisan key:generate
-
-```
-```
-cp .env.example .env
+chmod -R 777 bootstrap/cache/ storage/
 ```
 
 建置專案完成後，請打開 .env 輸入以下內容

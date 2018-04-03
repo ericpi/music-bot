@@ -1,6 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "xup6m6fu04/MusicBot",
+    "description": "MusicBot with Line api and KKBOX api",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",

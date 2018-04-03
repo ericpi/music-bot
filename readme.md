@@ -40,18 +40,20 @@ cp .env.example .env
 
 建置專案完成後，請打開 .env 輸入以下內容
 
-LINE_ACCESS_TOKEN=
+LINE_ACCESS_TOKEN=<br>
 
-KKBOX_ID=
-KKBOX_SECRET=
-KKBOX_KEY=
+KKBOX_ID=<br>
+KKBOX_SECRET=<br>
+KKBOX_KEY=<br>
 
 以下如不需支援 IPHONE 可以留空，如需支援都須填寫，並將 CONVERT_M4A 設定為 ON
 
-AWS_KEY=
-AWS_SERECT=
-AWS_BUCKET=
-AWS_REGION=
-CONVERT_KEY=
-LOCAL_MUSIC_PATH=
-CONVERT_M4A=
+AWS_KEY=<br>
+AWS_SERECT=<br>
+AWS_BUCKET=<br>
+AWS_REGION=<br><br>
+CloudConvert 網站取得的 key<br>
+CONVERT_KEY=<br><br>
+暫存音檔的本地位置(會刪除，不會佔用空間)<br>
+LOCAL_MUSIC_PATH=<br><br>
+CONVERT_M4A=<br>

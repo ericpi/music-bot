@@ -57,3 +57,9 @@ CONVERT_KEY=<br><br>
 暫存音檔的本地位置(會刪除，不會佔用空間)<br>
 LOCAL_MUSIC_PATH=<br><br>
 CONVERT_M4A=<br>
+
+這樣就完成囉！
+
+詳細說明及實際作品展示與試用請參考我的部落格，有問題可在此留言或到部落格留言
+
+https://blog.yorha2b.com/line-at-api-kkbox-api-azjle

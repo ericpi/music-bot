@@ -1,51 +1,57 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# MusicBot
+如何使用 LINE BOT 做出自己的音樂機器人
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+使用前準備
 
-## About Laravel
+1.需註冊一隻機器人 https://developers.line.me/ <br>
+2.需要為此專案準備 https 網域 <br>
+3.LINE BOT 需開啟 webhook 並取得 accessToken ，也要設定好指定網域 <br>
+4.取得 KKBOX API 的 ID,SECRET,KEY https://docs-zhtw.kkbox.codes/docs <br>
+5.因 IPHONE 只支援 m4a 格式，如需支援iphone需到 https://cloudconvert.com/ 註冊取得 KEY <br>
+6.轉檔完成後的 m4a 檔案，需有地方可以存，並能提供網址，目前設定存在 S3，需公開儲存桶 <br>
+  
+  PS : 如不需要支援 iphone 可忽略 5 及 6 步驟
+  
+以上準備完成後就可以安裝專案
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+依照以下步驟輸入指令
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```
+git clone https://github.com/xup6m6fu04/MusicBot.git
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+```
 
-## Learning Laravel
+```
+cd MusicBot
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+```
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+```
+composer install
 
-## Laravel Sponsors
+```
+```
+php artisan key:generate
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+```
+```
+cp .env.example .env
+```
 
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
+建置專案完成後，請打開 .env 輸入以下內容
 
-## Contributing
+LINE_ACCESS_TOKEN=
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+KKBOX_ID=
+KKBOX_SECRET=
+KKBOX_KEY=
 
-## Security Vulnerabilities
+以下如不需支援 IPHONE 可以留空，如需支援都須填寫，並將 CONVERT_M4A 設定為 ON
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+AWS_KEY=
+AWS_SERECT=
+AWS_BUCKET=
+AWS_REGION=
+CONVERT_KEY=
+LOCAL_MUSIC_PATH=
+CONVERT_M4A=

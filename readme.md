@@ -17,12 +17,12 @@
 依照以下步驟輸入指令
 
 ```
-git clone https://github.com/xup6m6fu04/MusicBot.git
+git clone https://github.com/xup6m6fu04/music-bot.git
 
 ```
 
 ```
-cd MusicBot
+cd music-bot
 
 ```
 

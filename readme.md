@@ -3,7 +3,7 @@
 
 使用前準備
 
-1.需註冊一隻機器人 https://developers.line.me/ <br>
+1.需註冊一隻機器人(for developer)  https://developers.line.me/ <br>
 2.需要為此專案準備 https 網域 <br>
 3.LINE BOT 需開啟 webhook 並取得 accessToken ，也要設定好指定網域 <br>
 4.取得 KKBOX API 的 ID,SECRET,KEY https://docs-zhtw.kkbox.codes/docs <br>

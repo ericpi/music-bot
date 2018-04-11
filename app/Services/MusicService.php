@@ -94,7 +94,7 @@ class MusicService
 		$keyname = $music_name . '.mp3';
 		
 		// Prepare the upload parameters.
-		$source = '/home/mizunarei/music/' . $keyname;
+		$source = env('LOCAL_MUSIC_PATH','') . $keyname;
 		
 		try {
 			$s3->putObject([
@@ -102,10 +102,10 @@ class MusicService
 		        'Key'    => $keyname,
 		        'Body'   => fopen($source, 'r'),
 		    ]);
-		    unlink('/home/mizunarei/music/'. $keyname);
-		    $music_url = 'https://s3-ap-northeast-1.amazonaws.com/music.yorha2b.com/' . urlencode($music_name) . '.mp3';
+		    unlink(env('LOCAL_MUSIC_PATH',''). $keyname);
+		    $music_url = 'https://s3-'.env('AWS_REGION').'.amazonaws.com/'.env('AWS_BUCKET').'/' . urlencode($music_name) . '.mp3';
 		} catch (Aws\S3\Exception\S3Exception $e) {
-			unlink('/home/mizunarei/music/'. $keyname);
+			unlink(env('LOCAL_MUSIC_PATH',''). $keyname);
 			$music_url = 'error';
 		}
 		
@@ -120,7 +120,7 @@ class MusicService
 		    "inputformat" => "mp3",
 		    "outputformat" => "m4a",
 		    "input" => "download",
-		    "file" => "https://music.yorha2b.com/".$text.".mp3",
+		    "file" => "https://".env('AWS_BUCKET')."/".$text.".mp3",
 		    "output" => [
 		        "s3" => [
 		            "accesskeyid" => env('AWS_KEY'),

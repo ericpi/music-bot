@@ -54,8 +54,8 @@ class MusicController extends Controller
 	        if(env('PUT_S3') == 'ON') {
 	        	// 將音樂存入本地後轉換到S3 ，再刪除本地
 		        $content = file_get_contents($music_url);
-				file_put_contents('/home/mizunarei/music/'.$music['tracks']['data'][0]['name'] . '.mp3', $content);
-				$music_url = $this->musicService->putS3($music['tracks']['data'][0]['name']);
+				file_put_contents(env('LOCAL_MUSIC_PATH','').str_replace(" ","-",$music['tracks']['data'][0]['name']) . '.mp3', $content);
+				$music_url = $this->musicService->putS3(str_replace(" ","-",$music['tracks']['data'][0]['name']));
 				if($music_url == 'error'){
 					throw new \Exception('查詢失敗');
 				}
@@ -63,10 +63,10 @@ class MusicController extends Controller
 	        
 	        // 是否轉換成IPHONE相容格式 (一天只能25首，且需2~3秒回應)
 	        if(env('CONVERT_M4A') == 'ON'){
-	        	file_put_contents(env('LOCAL_MUSIC_PATH').$music['tracks']['data'][0]['id'].".mp3", fopen($music_url, 'r'));
+	        	file_put_contents(env('LOCAL_MUSIC_PATH','').$music['tracks']['data'][0]['id'].".mp3", fopen($music_url, 'r'));
 	        	$music_result = $this->musicService->getMusicM4a($music['tracks']['data'][0]['id']);
 				$music_url = 'https://s3-'.env('AWS_REGION').'.amazonaws.com/'.env('AWS_BUCKET').'/'.$music['tracks']['data'][0]['id'].'.m4a';
-	        	unlink(env('LOCAL_MUSIC_PATH').$music['tracks']['data'][0]['id'].'.mp3');
+	        	unlink(env('LOCAL_MUSIC_PATH','').$music['tracks']['data'][0]['id'].'.mp3');
 	        }
 	        // 送出結果
 	        $this->lineService->sendTemplate_music($reply_token,$musicInfo,$music_url);

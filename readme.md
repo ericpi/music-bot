@@ -11,6 +11,7 @@
 6.轉檔完成後的 m4a 檔案，需有地方可以存，並能提供網址，目前設定存在 S3，需公開儲存桶 <br>
   
 PS1 : 如不需要支援 iphone 可忽略 5 及 6 步驟
+
 PS2 : 支援將歌曲儲存至 S3 並發送 S3 網址
   
 以上準備完成後就可以安裝專案
@@ -42,12 +43,14 @@ AWS_SERECT=<br>
 AWS_BUCKET=<br>
 AWS_REGION=<br><br>
 
+暫存音檔的本地位置(會刪除，不會佔用空間)<br>
+LOCAL_MUSIC_PATH=<br><br>
+
 以下如不需支援 IPHONE 可以留空，如需支援都須填寫，並將 CONVERT_M4A 設定為 ON
 
 CloudConvert 網站取得的 key<br>
 CONVERT_KEY=<br><br>
-暫存音檔的本地位置(會刪除，不會佔用空間)<br>
-LOCAL_MUSIC_PATH=<br><br>
+
 CONVERT_M4A=<br>
 
 這樣就完成囉！

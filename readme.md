@@ -10,7 +10,8 @@
 5.因 IPHONE 只支援 m4a 格式，如需支援iphone需到 https://cloudconvert.com/ 註冊取得 KEY 免費一天只能轉25首<br>
 6.轉檔完成後的 m4a 檔案，需有地方可以存，並能提供網址，目前設定存在 S3，需公開儲存桶 <br>
   
-  PS : 如不需要支援 iphone 可忽略 5 及 6 步驟
+PS1 : 如不需要支援 iphone 可忽略 5 及 6 步驟
+PS2 : 支援將歌曲儲存至 S3 並發送 S3 網址
   
 以上準備完成後就可以安裝專案
 
@@ -34,12 +35,15 @@ KKBOX_ID=<br>
 KKBOX_SECRET=<br>
 KKBOX_KEY=<br>
 
-以下如不需支援 IPHONE 可以留空，如需支援都須填寫，並將 CONVERT_M4A 設定為 ON
+以下如需支援 IPHONE 或 S3，就必須填寫，並將 PUT_S3 設定為 ON
 
 AWS_KEY=<br>
 AWS_SERECT=<br>
 AWS_BUCKET=<br>
 AWS_REGION=<br><br>
+
+以下如不需支援 IPHONE 可以留空，如需支援都須填寫，並將 CONVERT_M4A 設定為 ON
+
 CloudConvert 網站取得的 key<br>
 CONVERT_KEY=<br><br>
 暫存音檔的本地位置(會刪除，不會佔用空間)<br>

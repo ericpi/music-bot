@@ -3,11 +3,11 @@
 
 使用前準備
 
-1.需註冊一隻機器人 https://developers.line.me/ <br>
+1.需註冊一隻機器人(for developer)  https://developers.line.me/ <br>
 2.需要為此專案準備 https 網域 <br>
 3.LINE BOT 需開啟 webhook 並取得 accessToken ，也要設定好指定網域 <br>
 4.取得 KKBOX API 的 ID,SECRET,KEY https://docs-zhtw.kkbox.codes/docs <br>
-5.因 IPHONE 只支援 m4a 格式，如需支援iphone需到 https://cloudconvert.com/ 註冊取得 KEY <br>
+5.因 IPHONE 只支援 m4a 格式，如需支援iphone需到 https://cloudconvert.com/ 註冊取得 KEY 免費一天只能轉25首<br>
 6.轉檔完成後的 m4a 檔案，需有地方可以存，並能提供網址，目前設定存在 S3，需公開儲存桶 <br>
   
   PS : 如不需要支援 iphone 可忽略 5 及 6 步驟

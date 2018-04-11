@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Log;
 use \CloudConvert\Api;
+use Aws\S3\S3Client;
 
 class MusicService
 {
@@ -30,7 +31,7 @@ class MusicService
     	$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => "https://api.kkbox.com/v1.1/search?q=".$text."&type=track&territory=TW&offset=0&limit=1",
+		  CURLOPT_URL => "https://api.kkbox.com/v1.1/search?q=".urlencode($text)."&type=track&territory=TW&offset=0&limit=1",
 		  CURLOPT_RETURNTRANSFER => true,
 		  CURLOPT_ENCODING => "",
 		  CURLOPT_MAXREDIRS => 10,
@@ -77,6 +78,40 @@ class MusicService
 		return $response;
     }
     
+    public function putS3($music_name)
+    {
+    	//Instantiate the client.
+		$s3 = new S3Client([
+		    'version' => 'latest',
+		    'region'  => env('AWS_REGION',''),
+		    'credentials' => [
+		        'key'    => env('AWS_KEY',''),
+		        'secret' => env('AWS_SERECT','')
+		    ]
+		]);
+		
+		$bucket = env('AWS_BUCKET','');
+		$keyname = $music_name . '.mp3';
+		
+		// Prepare the upload parameters.
+		$source = '/home/mizunarei/music/' . $keyname;
+		
+		try {
+			$s3->putObject([
+		        'Bucket' => $bucket,
+		        'Key'    => $keyname,
+		        'Body'   => fopen($source, 'r'),
+		    ]);
+		    unlink('/home/mizunarei/music/'. $keyname);
+		    $music_url = 'https://s3-ap-northeast-1.amazonaws.com/music.yorha2b.com/' . urlencode($music_name) . '.mp3';
+		} catch (Aws\S3\Exception\S3Exception $e) {
+			unlink('/home/mizunarei/music/'. $keyname);
+			$music_url = 'error';
+		}
+		
+		return $music_url;
+    }
+    
     public function getMusicM4a($text)
     {
     	$api = new Api(env('CONVERT_KEY'));
@@ -85,7 +120,7 @@ class MusicService
 		    "inputformat" => "mp3",
 		    "outputformat" => "m4a",
 		    "input" => "download",
-		    "file" => "http://music.yorha2b.com/".$text.".mp3",
+		    "file" => "https://music.yorha2b.com/".$text.".mp3",
 		    "output" => [
 		        "s3" => [
 		            "accesskeyid" => env('AWS_KEY'),

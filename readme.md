@@ -57,4 +57,4 @@ CONVERT_M4A=<br>
 
 詳細說明及實際作品展示與試用請參考我的部落格，有問題可在此留言或到部落格留言
 
-https://blog.yorha2b.com/line-at-api-kkbox-api-azjle
+https://blog.inredis.com/line-at-api-kkbox-api-azjle
